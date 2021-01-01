@@ -1,7 +1,7 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-02 05:01:49
- * @LastEditTime: 2021-01-02 05:29:44
+ * @LastEditTime: 2021-01-02 05:46:09
  * @LastEditors: Jecosine
  * @Description:Settings
  */
@@ -25,6 +25,7 @@ var (
 	HTTPPort int
 )
 
+// Setup configurations
 func Setup() {
 	var e error
 	Cfg, e = ini.Load("conf/app.ini")
@@ -34,5 +35,5 @@ func Setup() {
 	RunMode = Cfg.Section("").Key("RUN_MODE").MustString("debug")
 	Name = Cfg.Section("app").Key("app").MustString("NAME")
 	HTTPPort = Cfg.Section("server").Key("HTTP_PORT").MustInt(8888)
-	log.Printf("RUN_MODE: %v\nNAME: %v\nHTTP_PORT: %v", RunMode, Name, HTTPPort)
+	log.Printf("\nRUN_MODE: %v\nNAME: %v\nHTTP_PORT: %v", RunMode, Name, HTTPPort)
 }
