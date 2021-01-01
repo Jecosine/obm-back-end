@@ -1,11 +1,11 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-02 05:01:49
- * @LastEditTime: 2021-01-02 05:46:09
+ * @LastEditTime: 2021-01-02 05:51:42
  * @LastEditors: Jecosine
  * @Description:Settings
  */
-
+// server setting
 package setting
 
 import (
