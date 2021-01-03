@@ -1,7 +1,7 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-02 04:15:04
- * @LastEditTime: 2021-01-03 08:17:08
+ * @LastEditTime: 2021-01-04 04:31:07
  * @LastEditors: Jecosine
  * @Description: Main Application
  */
@@ -14,6 +14,9 @@ import (
 	"github.com/Jecosine/obm-back-end/models"
 	"github.com/Jecosine/obm-back-end/pkg/setting"
 	"github.com/Jecosine/obm-back-end/routes"
+	// "net/http"
+	// "github.com/Jecosine/obm-back-end/pkg/setting"
+	// "github.com/Jecosine/obm-back-end/routes"
 )
 
 func main() {
