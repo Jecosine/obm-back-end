@@ -1,7 +1,7 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-02 06:46:30
- * @LastEditTime: 2021-01-04 05:29:38
+ * @LastEditTime: 2021-01-04 07:23:12
  * @LastEditors: Jecosine
  * @Description: Initialize models and connect database
  */
@@ -11,7 +11,6 @@ package models
 import (
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/Jecosine/obm-back-end/pkg/setting"
 
@@ -24,9 +23,9 @@ var db *gorm.DB
 // Model base model
 type Model struct {
 	// ID           string    `gorm:"primary_key" json:"id"`
-	CreatedTime  time.Time `json:"createdTime"`
-	ModifiedTime time.Time `json:"modifiedTime"`
-	DeletedTime  time.Time `json:"deletedTime"`
+	CreatedTime  int `json:"created_time"`
+	ModifiedTime int `json:"modified_time"`
+	DeletedTime  int `json:"deleted_time"`
 }
 
 func Init() {

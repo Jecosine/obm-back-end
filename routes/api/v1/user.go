@@ -35,6 +35,21 @@ func GetUser(c *gin.Context) {
 
 // AddUser add user
 func AddUser(c *gin.Context) {
+	var user models.User
+	status := e.UNAUTHORIZED
+	log.Printf("[INFO] Try query %s", c.Param("id"))
+	if err := c.ShouldBindJSON(&user); err == nil {
+		log.Printf("[INFO] In '/api/v1/user.go': user id %s", user.ID)
+		log.Printf("[INFO] In '/api/v1/user.go': user name %s", user.Username)
+		log.Printf("[INFO] In '/api/v1/user.go': user password %s", user.Password)
+		models.AddUser(user)
+	} else {
+		log.Printf("[ERROR] Error binding model when adding user: %v", err)
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"status": status,
+			"msg":    e.GetMsg(status),
+		})
+	}
 
 }
 

@@ -1,7 +1,7 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-04 02:44:44
- * @LastEditTime: 2021-01-04 05:32:30
+ * @LastEditTime: 2021-01-04 07:22:22
  * @LastEditors: Jecosine
  * @Description: User model
  */
@@ -16,6 +16,7 @@ import (
 
 type User struct {
 	Model
+
 	ID       string `gorm:"primary_key" json:"id"`
 	Username string `gorm:"column:username" json:"username"`
 	Password string `json:"password"`
@@ -25,12 +26,14 @@ type User struct {
 
 // set create time before insertion
 func (user *User) BeforeCreate(scope *gorm.Scope) error {
+	log.Println("[INFO] Really run? %s", time.Now().Format("2006-01-02 15:04:05"))
 	scope.SetColumn("CreatedTime", time.Now().Unix())
 	return nil
 }
 
 // set modified time before update
 func (user *User) BeforeUpdate(scope *gorm.Scope) error {
+	// scope.SetColumn("ModifiedTime", time.Now().Format("2006-01-02 15:04:05"))
 	scope.SetColumn("ModifiedTime", time.Now().Unix())
 	return nil
 }
@@ -58,14 +61,22 @@ func GetUser(id string) (user User) {
 }
 
 // AddUser add user
-func AddUser(data map[string]interface{}) bool {
-	db.Create(&User{
-		ID:       data["id"].(string),
-		Username: data["username"].(string),
-		Password: data["password"].(string),
-		Avatar:   data["avatar"].(string),
-		Email:    data["email"].(string),
-	})
+// func AddUser(data map[string]interface{}) bool {
+// 	db.Create(&User{
+// 		ID:       data["id"].(string),
+// 		Username: data["username"].(string),
+// 		Password: data["password"].(string),
+// 		Avatar:   data["avatar"].(string),
+// 		Email:    data["email"].(string),
+// 	})
+// 	return true
+// }
+
+func AddUser(user User) bool {
+	log.Printf("[INFO] In '/model/user.go': user id %s", user.ID)
+	log.Printf("[INFO] In '/model/user.go': user name %s", user.Username)
+	log.Printf("[INFO] In '/model/user.go': user password %s", user.Password)
+	db.Create(&user)
 	return true
 }
 
