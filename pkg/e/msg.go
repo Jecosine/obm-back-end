@@ -1,7 +1,7 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-02 06:03:50
- * @LastEditTime: 2021-01-02 06:56:51
+ * @LastEditTime: 2021-01-04 02:41:59
  * @LastEditors: Jecosine
  * @Description: Error code message
  */
@@ -10,8 +10,11 @@ package e
 
 // MsgDict Dictionary of message
 var MsgDict = map[int]string{
-	SUCCESS: "OK",
-	ERROR:   "Internal Error",
+	SUCCESS:      "OK",
+	ERROR:        "Internal Error",
+	FORBIDDEN:    "Forbidden",
+	NOTFOUND:     "Resource Not Found",
+	UNAUTHORIZED: "Unauthorized",
 }
 
 // GetMsg get message by error code
