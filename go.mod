@@ -14,6 +14,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/ugorji/go v1.2.2 // indirect
+	github.com/unknwon/com v1.0.1
 	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad // indirect
 	golang.org/x/sys v0.0.0-20201231184435-2d18734c6014 // indirect
 	google.golang.org/protobuf v1.25.0 // indirect
@@ -21,7 +22,6 @@ require (
 )
 
 replace (
-
 	// github.com/Jecosine/obm-back-end/routes/api/v1 => ./routes/api/v1
 
 	github.com/Jecosine/obm-back-end/models => ./models
