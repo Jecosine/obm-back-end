@@ -1,7 +1,7 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-03 07:53:33
- * @LastEditTime: 2021-01-03 08:12:00
+ * @LastEditTime: 2021-01-04 05:05:21
  * @LastEditors: Jecosine
  * @Description: router definition
  */
@@ -24,7 +24,7 @@ func Init() *gin.Engine {
 		apiV1.GET("/user/get/:id", v1.GetUser)
 		apiV1.POST("/user/save/:id", v1.EditUser)
 		apiV1.POST("/user/del/:id", v1.DeleteUser)
-		apiV1.POST("/user/add/:id", v1.AddUser)
+		apiV1.POST("/user/add/", v1.AddUser)
 	}
 	return r
 }
