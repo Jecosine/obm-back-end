@@ -1,7 +1,7 @@
 /*
  * @Author: Jecosine
  * @Date: 2021-01-04 02:44:44
- * @LastEditTime: 2021-01-04 07:22:22
+ * @LastEditTime: 2021-01-04 18:45:57
  * @LastEditors: Jecosine
  * @Description: User model
  */
@@ -24,20 +24,22 @@ type User struct {
 	Email    string `json:"email"`
 }
 
-// set create time before insertion
+// BeforeCreate set create time before insertion
 func (user *User) BeforeCreate(scope *gorm.Scope) error {
 	log.Println("[INFO] Really run? %s", time.Now().Format("2006-01-02 15:04:05"))
 	scope.SetColumn("CreatedTime", time.Now().Unix())
 	return nil
 }
 
-// set modified time before update
+// BeforeUpdate set modified time before update
 func (user *User) BeforeUpdate(scope *gorm.Scope) error {
 	// scope.SetColumn("ModifiedTime", time.Now().Format("2006-01-02 15:04:05"))
 	scope.SetColumn("ModifiedTime", time.Now().Unix())
 	return nil
 }
-func ExistUserById(id string) bool {
+
+// ExistUserByID check whether user exists
+func ExistUserByID(id string) bool {
 	var user User
 	db.Select("id").Where("id=?", id).First(&user)
 	if len(user.ID) != 0 {

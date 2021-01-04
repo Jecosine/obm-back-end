@@ -20,7 +20,7 @@ func GetUser(c *gin.Context) {
 	log.Printf("[INFO] In 'routes/api/v1/user.go': Get url param id %v", id)
 	status := e.ERROR
 	var data interface{}
-	if models.ExistUserById(id) {
+	if models.ExistUserByID(id) {
 		data = models.GetUser(id)
 		status = e.SUCCESS
 	} else {
