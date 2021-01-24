@@ -55,10 +55,40 @@ func AddUser(c *gin.Context) {
 
 // EditUser edit user
 func EditUser(c *gin.Context) {
-
+	var user models.User
+	status := e.UNAUTHORIZED
+	id := c.Param("id")
+	log.Printf("[INFO] Try modifiying %s", c.Param("id"))
+	if err := c.ShouldBindJSON(&user); err == nil {
+		log.Printf("[INFO] In '/api/v1/user.go': user id %s", user.ID)
+		log.Printf("[INFO] In '/api/v1/user.go': user name %s", user.Username)
+		log.Printf("[INFO] In '/api/v1/user.go': user password %s", user.Password)
+		models.EditUser(id, user)
+	} else {
+		log.Printf("[ERROR] Error binding model when adding user: %v", err)
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"status": status,
+			"msg":    e.GetMsg(status),
+		})
+	}
 }
 
 // DeleteUser delete user
 func DeleteUser(c *gin.Context) {
-
+	var user models.User
+	status := e.UNAUTHORIZED
+	id := c.Param("id")
+	log.Printf("[INFO] Try modifiying %s", c.Param("id"))
+	if len(id) != 0 {
+		log.Printf("[INFO] In '/api/v1/user.go': user id %s", user.ID)
+		log.Printf("[INFO] In '/api/v1/user.go': user name %s", user.Username)
+		log.Printf("[INFO] In '/api/v1/user.go': user password %s", user.Password)
+		models.DeleteUser(id)
+	} else {
+		log.Printf("[ERROR] Error binding model when adding user: %v", err)
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"status": status,
+			"msg":    e.GetMsg(status),
+		})
+	}
 }
